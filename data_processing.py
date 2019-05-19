@@ -275,6 +275,7 @@ def change_tempo_folder(source_folder,tempo_folder):
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
+            print(_name)
             target_path = tempo_folder+_path[len(source_folder):]
             if not os.path.exists(target_path):
                 os.makedirs(target_path) 
@@ -286,7 +287,8 @@ def change_tempo_folder(source_folder,tempo_folder):
 #                invalid_files_counter +=1
 
 def do_all_steps():
-    
+    print("source folder")
+    print(source_folder)
 
     print('changing Tempo')
     change_tempo_folder(source_folder,tempo_folder1) 
