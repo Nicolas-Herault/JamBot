@@ -276,21 +276,22 @@ def change_tempo_folder(source_folder,tempo_folder):
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
+            print(_path)
             print(_name)
             target_path = tempo_folder+_path[len(source_folder):]
             if not os.path.exists(target_path):
                 os.makedirs(target_path) 
-            if os.path.isfile(target_path + "\\" + _name):
+            if os.path.isfile(target_path + "/" + _name):
                 print("already exists")
             else : 
                 try:
-                    try:
-                        mf.change_tempo(_name, _path, target_path)
-                    except (ValueError, EOFError, IndexError, OSError, KeyError, ZeroDivisionError, AttributeError) as e:
-                        exception_str = 'Unexpected error in ' + name  + ':\n', e, sys.exc_info()[0]
-                        print(exception_str)
-                except () as e:
-                    print("ULTRA ERROR", e)
+            
+                    mf.change_tempo(_name, _path, target_path)
+                except (ValueError, EOFError, IndexError, OSError, KeyError, ZeroDivisionError, AttributeError) as e:
+                    print("42")
+                    exception_str = 'Unexpected error in ' + name  + ':\n', e, sys.exc_info()[0]
+                    print(exception_str)
+         
                         #                invalid_files_counter +=1
 
 def do_all_steps():

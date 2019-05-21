@@ -33,6 +33,34 @@ if (socket.gethostname()=="SurfaceNico"):
 
 else : 
 
+    print("School Setting")
+    source_folder = '/homes/nherault/Bureau/Deep Learning 502/JamBot-Original/JamBot-master/data/original directory/clean_midi' + subfolder
+    saving_folder = '/homes/nherault/Bureau/Deep Learning 502/JamBot-Original/JamBot-master/data/original directory/clean_midi' 
+    shifted = True
+    shift_folder = ''
+    if shifted:
+        shift_folder = 'shifted/'
+
+
+    # If you only want to process a subfolder like '/A' or '/A/A' for tests
+    subfolder = '/'
+
+    tempo_folder1 = saving_folder  + 'tempo' + subfolder
+    histo_folder1 = saving_folder  + 'histo' + subfolder
+
+    tempo_folder2 = saving_folder + shift_folder + 'tempo' + subfolder
+    shifted_folder = saving_folder + shift_folder + 'shifted' + subfolder
+    pickle_folder = saving_folder + shift_folder + 'pianoroll' + subfolder
+    roll_folder = saving_folder + shift_folder + 'indroll' + subfolder
+    histo_folder2 = saving_folder + shift_folder + 'histo' + subfolder
+    chords_folder = saving_folder + shift_folder + 'chords' + subfolder
+    chords_index_folder = saving_folder + shift_folder + 'chord_index' + subfolder
+    song_histo_folder = saving_folder + shift_folder + 'song_histo' + subfolder
+
+    
+    
+    
+    """
     print("Default Folder Settings")
     shifted = True
     shift_folder = ''
@@ -55,7 +83,7 @@ else :
     chords_folder = 'data/' + shift_folder + 'chords' + subfolder
     chords_index_folder = 'data/' + shift_folder + 'chord_index' + subfolder
     song_histo_folder = 'data/' + shift_folder + 'song_histo' + subfolder
-
+"""
 
 # Test Paths:
 #source_folder = 'data/test'
