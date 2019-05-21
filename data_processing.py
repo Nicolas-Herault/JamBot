@@ -268,6 +268,7 @@ def note_ind_folder(tempo_folder,roll_folder):
             except (ValueError, EOFError, IndexError, OSError, KeyError, ZeroDivisionError) as e:
                 exception_str = 'Unexpected error in ' + name  + ':\n', e, sys.exc_info()[0]
                 print(exception_str)
+        
 #                invalid_files_counter +=1
 
 def change_tempo_folder(source_folder,tempo_folder):
@@ -279,12 +280,18 @@ def change_tempo_folder(source_folder,tempo_folder):
             target_path = tempo_folder+_path[len(source_folder):]
             if not os.path.exists(target_path):
                 os.makedirs(target_path) 
-            try:
-                mf.change_tempo(_name, _path, target_path)
-            except (ValueError, EOFError, IndexError, OSError, KeyError, ZeroDivisionError, AttributeError) as e:
-                exception_str = 'Unexpected error in ' + name  + ':\n', e, sys.exc_info()[0]
-                print(exception_str)
-#                invalid_files_counter +=1
+            if os.path.isfile(target_path + "\\" + _name):
+                print("already exists")
+            else : 
+                try:
+                    try:
+                        mf.change_tempo(_name, _path, target_path)
+                    except (ValueError, EOFError, IndexError, OSError, KeyError, ZeroDivisionError, AttributeError) as e:
+                        exception_str = 'Unexpected error in ' + name  + ':\n', e, sys.exc_info()[0]
+                        print(exception_str)
+                except () as e:
+                    print("ULTRA ERROR", e)
+                        #                invalid_files_counter +=1
 
 def do_all_steps():
     print("source folder")

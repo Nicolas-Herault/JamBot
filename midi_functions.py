@@ -303,7 +303,10 @@ def change_tempo_folder(data_path, target_path):
 def myround(x, base):
     return int(base * round(float(x)/base))
 
+
 def change_tempo(filename, data_path, target_path):
+    """Créé un nouveau fichier midi enregistrer au target_path.
+    Ce fichier est une copie du fichier au data_path mais son tempo est mis à 500000 """
     mid = mido.MidiFile(data_path + filename)
     new_mid = mido.MidiFile()
     new_mid.ticks_per_beat = mid.ticks_per_beat
