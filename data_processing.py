@@ -320,8 +320,10 @@ def do_all_steps():
 
     print('extracting chords')
     save_chords_from_histo(histo_folder2,chords_folder)
+    
     print('getting dictionary')
     chord_to_index, index_to_chord = make_chord_dict(chords_folder, num_chords)
+    
     print('converting chords to index sequences')
     save_index_from_chords(chords_folder,chords_index_folder)
 
