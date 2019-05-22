@@ -66,6 +66,7 @@ def shift_midi_files(song_histo_folder,tempo_folder,shifted_folder):
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
+            print('shifting midi files   ',_path.split('/')[-2],"    ",_name)
             tempo_path = tempo_folder+_path[len(song_histo_folder):]
             target_path = shifted_folder+_path[len(song_histo_folder):]
             song_histo = pickle.load(open(_path + _name, 'rb'))
@@ -92,6 +93,7 @@ def count_scales():
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
+            print(_path.split('/')[-2],"    ",_name)
             song_histo = pickle.load(open(_path + _name, 'rb'))
             key = mf.histo_to_key(song_histo, key_n)
             if key in diatonic_scales:
@@ -116,6 +118,7 @@ def count_keys():
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
+            print(_path.split('/')[-2],"    ",_name)
             song_histo = pickle.load(open(_path + _name, 'rb'))
             key = mf.histo_to_key(song_histo, key_n)
             if key in key_cntr:
@@ -130,7 +133,9 @@ def save_song_histo_from_histo(histo_folder,song_histo_folder):
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
+            print('make song histo   ',_path.split('/')[-2],"    ",_name)
             target_path = song_histo_folder+_path[len(histo_folder):]
+            
             if not os.path.exists(target_path):
                 os.makedirs(target_path) 
             mf.load_histo_save_song_histo(_name, _path, target_path)
@@ -142,6 +147,7 @@ def save_index_from_chords(chords_folder,chords_index_folder):
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
+            print('converting chords to index sequences   ',_path.split('/')[-2],"    ",_name)
             target_path = chords_index_folder+_path[len(chords_folder):]
             if not os.path.exists(target_path):
                 os.makedirs(target_path) 
@@ -159,6 +165,7 @@ def make_chord_dict(chords_folder, num_chords):
     chord_to_index = dict()
     chord_to_index[UNK] = 0
     for chord, _ in cntr:
+        print('getting dictionary')
         chord_to_index[chord] = len(chord_to_index)
     index_to_chord = {v: k for k, v in chord_to_index.items()}
     pickle.dump(chord_to_index,open(dict_path + chord_dict_name , 'wb'))
@@ -172,6 +179,7 @@ def count_chords(chords_folder, num_chords):
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
+            print(_path.split('/')[-2],"    ",_name)
             chords = pickle.load(open(_path + _name, 'rb'))
             for chord in chords:
                 if chord in chord_cntr:
@@ -187,6 +195,7 @@ def count_chords2(chords_folder, num_chords):
             _path = path.replace('\\', '/') + '/'
             _path = _path.replace('/shifted', '')
             _name = name.replace('\\', '/')
+            print(_path.split('/')[-2],"    ",_name)
             chords = pickle.load(open(_path + _name, 'rb'))
             for chord in chords:
                 if chord in chord_cntr:
@@ -202,6 +211,7 @@ def save_chords_from_histo(histo_folder,chords_folder):
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
+            print('extracting chords   ',_path.split('/')[-2],"    ",_name)
             target_path = chords_folder+_path[len(histo_folder):]
             if not os.path.exists(target_path):
                 os.makedirs(target_path) 
@@ -215,6 +225,7 @@ def save_histo_oct_from_pianoroll_folder():
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
+            print('histogramming   ',_path.split('/')[-2],"    ",_name)
             target_path = histo_folder+_path[len(pickle_folder):]
             if not os.path.exists(target_path):
                 os.makedirs(target_path) 
@@ -227,15 +238,19 @@ def save_histo_oct_from_midi_folder(tempo_folder,histo_folder):
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
+            print('histogramming   ',_path.split('/')[-2],"    ",_name)
             target_path = histo_folder+_path[len(tempo_folder):]
             if not os.path.exists(target_path):
                 os.makedirs(target_path)
-            try:
-                mf.midi_to_histo_oct(samples_per_bar,octave, fs, _name, _path, target_path)
-            except (ValueError, EOFError, IndexError, OSError, KeyError, ZeroDivisionError) as e:
-                exception_str = 'Unexpected error in ' + name  + ':\n', e, sys.exc_info()[0]
-                print(exception_str)
-#                invalid_files_counter +=1
+            if (os.path.isfile(target_path + "/" + _name) or os.path.isfile(target_path + "\\" + _name) ):
+                print("already exists")
+            else : 
+                try:
+                    mf.midi_to_histo_oct(samples_per_bar,octave, fs, _name, _path, target_path)
+                except (ValueError, EOFError, IndexError, OSError, KeyError, ZeroDivisionError) as e:
+                    exception_str = 'Unexpected error in ' + name  + ':\n', e, sys.exc_info()[0]
+                    print(exception_str)
+    #                invalid_files_counter +=1
 
 
 def pianoroll_folder():
@@ -260,7 +275,7 @@ def note_ind_folder(tempo_folder,roll_folder):
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
-            print(_path.split('/')[-2],"    ",_name)
+            print('making note indexes   ',_path.split('/')[-2],"    ",_name)
             
             target_path = roll_folder+_path[len(tempo_folder):]
             if not os.path.exists(target_path):
@@ -281,7 +296,7 @@ def change_tempo_folder(source_folder,tempo_folder):
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
-            print(_path.split('/')[-2],"    ",_name)
+            print('changing Tempo   ',_path.split('/')[-2],"    ",_name)
             
             target_path = tempo_folder+_path[len(source_folder):]
             if not os.path.exists(target_path):
@@ -315,11 +330,9 @@ def do_all_steps():
     print('shifting midi files')
     shift_midi_files(song_histo_folder,tempo_folder1,tempo_folder2)
     
-
     print('making note indexes')
     note_ind_folder(tempo_folder2,roll_folder)
 
-    
     print('histogramming')
     save_histo_oct_from_midi_folder(tempo_folder2,histo_folder2)
 
