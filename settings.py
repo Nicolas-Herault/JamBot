@@ -41,8 +41,18 @@ if (socket.gethostname()=="SurfaceNico" or socket.gethostname()=="Nicolas-HP" ):
 else : 
 
     print("School Setting")
-    source_folder = '/homes/nherault/Bureau/Deep Learning 502/JamBot-Original/JamBot-master/data/original directory/clean_midi' + subfolder
-    saving_folder = '/homes/nherault/Bureau/Deep Learning 502/JamBot-Original/JamBot-master/data/original directory/clean_midi' 
+    
+    #ordi = 'Nanass'
+    ordi = 'Vachette'
+    
+    
+    if(ordi == 'Nanass'):
+        source_folder = '/homes/nherault/Bureau/Deep Learning 502/JamBot-Original/JamBot-master/data/original directory/clean_midi' + subfolder
+        saving_folder = '/homes/nherault/Bureau/Deep Learning 502/JamBot-Original/JamBot-master/data/original directory/clean_midi' 
+    else:    
+        source_folder = '/homes/naudepin/Documents/ELU502 DeepLearning/clean_midi' + subfolder
+        saving_folder = '/homes/naudepin/Documents/ELU502 DeepLearning/clean_midi' 
+    
     shifted = True
     shift_folder = ''
     if shifted:
