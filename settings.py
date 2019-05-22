@@ -4,18 +4,17 @@ print(socket.gethostname())
 # If you only want to process a subfolder like '/A' or '/A/A' for tests
 subfolder = '/'
 
-
 if (socket.gethostname()=="SurfaceNico" or socket.gethostname()=="Nicolas-HP" ):
     if (socket.gethostname()=="SurfaceNico"):
         print("Surface Setting")
         source_folder = 'C:/Users/AUDEPIN/Documents/DataSet/clean_midi' + subfolder
-        saving_folder = 'C:/Users/AUDEPIN/Documents/DataSet/clean_midi' 
+        saving_folder = 'C:/Users/AUDEPIN/Documents/DataSet/clean_midi'
     if (socket.gethostname()=="Nicolas-HP"):
         print("Nicolas-HP Setting")
         source_folder = 'C:/Users/Nicolas2/Documents/DataSet/clean_midi' + subfolder
-        saving_folder = 'C:/Users/Nicolas2/Documents/DataSet/clean_midi' 
-        
-    
+        saving_folder = 'C:/Users/Nicolas2/Documents/DataSet/clean_midi'
+
+
     shifted = True
     shift_folder = ''
     if shifted:
@@ -23,7 +22,7 @@ if (socket.gethostname()=="SurfaceNico" or socket.gethostname()=="Nicolas-HP" ):
 
 
     # If you only want to process a subfolder like '/A' or '/A/A' for tests
-    subfolder = '/'
+    subfolder = '/The Beattles'
 
     tempo_folder1 = saving_folder  + 'tempo' + subfolder
     histo_folder1 = saving_folder  + 'histo' + subfolder
@@ -37,22 +36,47 @@ if (socket.gethostname()=="SurfaceNico" or socket.gethostname()=="Nicolas-HP" ):
     chords_index_folder = saving_folder + shift_folder + 'chord_index' + subfolder
     song_histo_folder = saving_folder + shift_folder + 'song_histo' + subfolder
 
+elif (socket.gethostname()=="DESKTOP-VFISH1P"):
+    print("Nanass-ASUS")
+    source_folder = 'C:\\Users\\nicoh\\OneDrive\\Documents\\GitHub\\Midi-Data\\clean_midi' + subfolder
+    saving_folder = 'C:\\Users\\nicoh\\OneDrive\\Documents\\GitHub\\Midi-Data\\clean_midi' + subfolder
 
-else : 
+    shifted = True
+    shift_folder = ''
+    if shifted:
+        shift_folder = 'shifted/'
+
+
+    # If you only want to process a subfolder like '/A' or '/A/A' for tests
+    subfolder = '/Led Zeppelin'
+
+    tempo_folder1 = saving_folder  + 'tempo' + subfolder
+    histo_folder1 = saving_folder  + 'histo' + subfolder
+
+    tempo_folder2 = saving_folder + shift_folder + 'tempo' + subfolder
+    shifted_folder = saving_folder + shift_folder + 'shifted' + subfolder
+    pickle_folder = saving_folder + shift_folder + 'pianoroll' + subfolder
+    roll_folder = saving_folder + shift_folder + 'indroll' + subfolder
+    histo_folder2 = saving_folder + shift_folder + 'histo' + subfolder
+    chords_folder = saving_folder + shift_folder + 'chords' + subfolder
+    chords_index_folder = saving_folder + shift_folder + 'chord_index' + subfolder
+    song_histo_folder = saving_folder + shift_folder + 'song_histo' + subfolder
+
+else :
 
     print("School Setting")
-    
+
     #ordi = 'Nanass'
     ordi = 'Vachette'
-    
-    
+
+
     if(ordi == 'Nanass'):
         source_folder = '/homes/nherault/Bureau/Deep Learning 502/JamBot-Original/JamBot-master/data/original directory/clean_midi' + subfolder
-        saving_folder = '/homes/nherault/Bureau/Deep Learning 502/JamBot-Original/JamBot-master/data/original directory/clean_midi' 
-    else:    
+        saving_folder = '/homes/nherault/Bureau/Deep Learning 502/JamBot-Original/JamBot-master/data/original directory/clean_midi'
+    else:
         source_folder = '/homes/naudepin/Documents/ELU502 DeepLearning/clean_midi' + subfolder
-        saving_folder = '/homes/naudepin/Documents/ELU502 DeepLearning/clean_midi' 
-    
+        saving_folder = '/homes/naudepin/Documents/ELU502 DeepLearning/clean_midi'
+
     shifted = True
     shift_folder = ''
     if shifted:
@@ -74,9 +98,9 @@ else :
     chords_index_folder = saving_folder + shift_folder + 'chord_index' + subfolder
     song_histo_folder = saving_folder + shift_folder + 'song_histo' + subfolder
 
-    
-    
-    
+
+
+
     """
     print("Default Folder Settings")
     shifted = True
@@ -134,7 +158,7 @@ counter_feature = True
 counter_size = 0
 if counter_feature:
     counter_size = 3
-    
+
 # Appends also the next cord to the feature vector:
 next_chord_feature = True
 
@@ -203,6 +227,3 @@ Es = tuple((3,7,10))
 As = tuple((0,3,8))
 Des = tuple((1,5,8))
 Fis = tuple((1,6,10))
-
-
-
