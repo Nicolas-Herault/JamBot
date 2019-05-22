@@ -260,15 +260,20 @@ def note_ind_folder(tempo_folder,roll_folder):
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
+            print(_path.split('/')[-2],"    ",_name)
+            
             target_path = roll_folder+_path[len(tempo_folder):]
             if not os.path.exists(target_path):
                 os.makedirs(target_path)
-            try:
-                mf.save_note_ind(_name, _path, target_path, fs)
-            except (ValueError, EOFError, IndexError, OSError, KeyError, ZeroDivisionError) as e:
-                exception_str = 'Unexpected error in ' + name  + ':\n', e, sys.exc_info()[0]
-                print(exception_str)
-        
+            if (os.path.isfile(target_path + "/" + _name) or os.path.isfile(target_path + "\\" + _name) ):
+                print("already exists")
+            else:    
+                try:
+                    mf.save_note_ind(_name, _path, target_path, fs)
+                except (ValueError, EOFError, IndexError, OSError, KeyError, ZeroDivisionError) as e:
+                    exception_str = 'Unexpected error in ' + name  + ':\n', e, sys.exc_info()[0]
+                    print(exception_str)
+            
 #                invalid_files_counter +=1
 
 def change_tempo_folder(source_folder,tempo_folder):
