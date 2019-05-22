@@ -5,10 +5,17 @@ print(socket.gethostname())
 subfolder = '/'
 
 
-if (socket.gethostname()=="SurfaceNico"):
-    print("Surface Setting")
-    source_folder = 'C:/Users/AUDEPIN/Documents/DataSet/clean_midi' + subfolder
-    saving_folder = 'C:/Users/AUDEPIN/Documents/DataSet/clean_midi' 
+if (socket.gethostname()=="SurfaceNico" or socket.gethostname()=="Nicolas-HP" ):
+    if (socket.gethostname()=="SurfaceNico"):
+        print("Surface Setting")
+        source_folder = 'C:/Users/AUDEPIN/Documents/DataSet/clean_midi' + subfolder
+        saving_folder = 'C:/Users/AUDEPIN/Documents/DataSet/clean_midi' 
+    if (socket.gethostname()=="Nicolas-HP"):
+        print("Nicolas-HP Setting")
+        source_folder = 'C:/Users/Nicolas2/Documents/DataSet/clean_midi' + subfolder
+        saving_folder = 'C:/Users/Nicolas2/Documents/DataSet/clean_midi' 
+        
+    
     shifted = True
     shift_folder = ''
     if shifted:

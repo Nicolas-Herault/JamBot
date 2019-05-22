@@ -276,19 +276,19 @@ def change_tempo_folder(source_folder,tempo_folder):
         for name in files:
             _path = path.replace('\\', '/') + '/'
             _name = name.replace('\\', '/')
-            print(_path)
-            print(_name)
+            print(_path.split('/')[-2],"    ",_name)
+            
             target_path = tempo_folder+_path[len(source_folder):]
             if not os.path.exists(target_path):
                 os.makedirs(target_path) 
-            if os.path.isfile(target_path + "/" + _name):
+            if (os.path.isfile(target_path + "/" + _name) or os.path.isfile(target_path + "\\" + _name) ):
                 print("already exists")
             else : 
                 try:
             
                     mf.change_tempo(_name, _path, target_path)
                 except (ValueError, EOFError, IndexError, OSError, KeyError, ZeroDivisionError, AttributeError) as e:
-                    print("42")
+                    
                     exception_str = 'Unexpected error in ' + name  + ':\n', e, sys.exc_info()[0]
                     print(exception_str)
          
