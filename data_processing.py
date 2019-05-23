@@ -76,11 +76,16 @@ def shift_midi_files(song_histo_folder,tempo_folder,shifted_folder):
             if shift != 'other':
                 if not os.path.exists(target_path):
                     os.makedirs(target_path)
-                try:
-                    mf.shift_midi(shift, _name, tempo_path, target_path)
-                except (ValueError, EOFError, IndexError, OSError, KeyError, ZeroDivisionError) as e:
-                    exception_str = 'Unexpected error in ' + name  + ':\n', e, sys.exc_info()[0]
-                    print(exception_str)
+                
+                
+                if (os.path.isfile(target_path + _name ) or os.path.isfile(target_path + _name) ):
+                    print("already exists")
+                else : 
+                    try:
+                        mf.shift_midi(shift, _name, tempo_path, target_path)
+                    except (ValueError, EOFError, IndexError, OSError, KeyError, ZeroDivisionError) as e:
+                        exception_str = 'Unexpected error in ' + name  + ':\n', e, sys.exc_info()[0]
+                        print(exception_str)
 
 
 def count_scales():
@@ -138,7 +143,12 @@ def save_song_histo_from_histo(histo_folder,song_histo_folder):
             
             if not os.path.exists(target_path):
                 os.makedirs(target_path) 
-            mf.load_histo_save_song_histo(_name, _path, target_path)
+            
+            
+            if (os.path.isfile(target_path + _name ) or os.path.isfile(target_path + _name) ):
+                print("already exists")
+            else : 
+                mf.load_histo_save_song_histo(_name, _path, target_path)
 
 
 def save_index_from_chords(chords_folder,chords_index_folder):
@@ -215,7 +225,11 @@ def save_chords_from_histo(histo_folder,chords_folder):
             target_path = chords_folder+_path[len(histo_folder):]
             if not os.path.exists(target_path):
                 os.makedirs(target_path) 
-            mf.load_histo_save_chords(chord_n, _name, _path, target_path)
+            
+            if (os.path.isfile(target_path + _name ) or os.path.isfile(target_path + _name) ):
+                print("already exists")
+            else : 
+                mf.load_histo_save_chords(chord_n, _name, _path, target_path)
 
 
 
@@ -242,7 +256,8 @@ def save_histo_oct_from_midi_folder(tempo_folder,histo_folder):
             target_path = histo_folder+_path[len(tempo_folder):]
             if not os.path.exists(target_path):
                 os.makedirs(target_path)
-            if (os.path.isfile(target_path + "/" + _name) or os.path.isfile(target_path + "\\" + _name) ):
+            
+            if (os.path.isfile(target_path + _name +".pickle") or os.path.isfile(target_path + _name+".pickle") ):
                 print("already exists")
             else : 
                 try:
@@ -280,7 +295,7 @@ def note_ind_folder(tempo_folder,roll_folder):
             target_path = roll_folder+_path[len(tempo_folder):]
             if not os.path.exists(target_path):
                 os.makedirs(target_path)
-            if (os.path.isfile(target_path + "/" + _name) or os.path.isfile(target_path + "\\" + _name) ):
+            if (os.path.isfile(target_path + "/" + _name +".pickle") or os.path.isfile(target_path + "\\" + _name +".pickle") ):
                 print("already exists")
             else:    
                 try:
@@ -319,10 +334,10 @@ def do_all_steps():
     print(source_folder)
 
     print('changing Tempo')
-    change_tempo_folder(source_folder,tempo_folder1) 
+    #change_tempo_folder(source_folder,tempo_folder1) 
     
     print('histogramming')
-    save_histo_oct_from_midi_folder(tempo_folder1,histo_folder1)
+    #save_histo_oct_from_midi_folder(tempo_folder1,histo_folder1)
 
     print('make song histo')
     save_song_histo_from_histo(histo_folder1,song_histo_folder)

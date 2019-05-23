@@ -2,7 +2,7 @@ import socket
 print(socket.gethostname())
 
 # If you only want to process a subfolder like '/A' or '/A/A' for tests
-subfolder = '/The Beatles'
+subfolder = ''
 
 
 if (socket.gethostname()=="SurfaceNico" or socket.gethostname()=="Nicolas-HP" ):
