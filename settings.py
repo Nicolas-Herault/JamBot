@@ -13,17 +13,12 @@ if (socket.gethostname()=="SurfaceNico" or socket.gethostname()=="Nicolas-HP" ):
     if (socket.gethostname()=="Nicolas-HP"):
         print("Nicolas-HP Setting")
         source_folder = 'C:/Users/Nicolas2/Documents/DataSet/clean_midi' + subfolder
-        saving_folder = 'C:/Users/Nicolas2/Documents/DataSet/clean_midi' 
-        
+        saving_folder = 'C:/Users/Nicolas2/Documents/DataSet/clean_midi'       
     
     shifted = True
     shift_folder = ''
     if shifted:
         shift_folder = 'shifted/'
-
-
-    # If you only want to process a subfolder like '/A' or '/A/A' for tests
-    subfolder = '/'
 
     tempo_folder1 = saving_folder  + 'tempo' + subfolder
     histo_folder1 = saving_folder  + 'histo' + subfolder
@@ -48,7 +43,7 @@ else :
     
     if(ordi == 'Nanass'):
         source_folder = '/homes/nherault/Bureau/Deep Learning 502/JamBot-Original/JamBot-master/data/original directory/clean_midi' + subfolder
-        saving_folder = '/homes/nherault/Bureau/Deep Learning 502/JamBot-Original/JamBot-master/data/original directory/clean_midi' 
+        saving_folder = '/homes/nherault/Bureau/Deep Learning 502/JamBot-Original/JamBot-master/data/original directory/clean_midi'
     else:    
         source_folder = '/homes/naudepin/Documents/ELU502 DeepLearning/clean_midi' + subfolder
         saving_folder = '/homes/naudepin/Documents/ELU502 DeepLearning/clean_midi' 
@@ -59,8 +54,6 @@ else :
         shift_folder = 'shifted/'
 
 
-    # If you only want to process a subfolder like '/A' or '/A/A' for tests
-    subfolder = '/'
 
     tempo_folder1 = saving_folder  + 'tempo' + subfolder
     histo_folder1 = saving_folder  + 'histo' + subfolder

@@ -13,18 +13,18 @@ import data_class
 
 
 
-chord_model_folder = 'models/chords/1523433134-Shifted_True_Lr_1e-05_EmDim_10_opt_Adam_bi_False_lstmsize_512_trainsize_4_testsize_1_samples_per_bar8/'
-chord_model_name = 'model_Epoch10_4.pickle'
+chord_model_folder = '/homes/naudepin/Documents/ELU502 DeepLearning/JamBot/models/chords/1558533377-Shifted_True_Lr_1e-05_EmDim_10_opt_Adam_bi_False_lstmsize_512_trainsize_4_testsize_1_samples_per_bar8/'
+chord_model_name = 'model_Epoch20_21.pickle'
 
-melody_model_folder = 'models/chords_mldy/Shifted_True_NextChord_True_ChordEmbed_embed_Counter_True_Highcrop_84_Lowcrop_24_Lr_1e-06_opt_Adam_bi_False_lstmsize_512_trainsize_4_testsize_1/'
-melody_model_name = 'modelEpoch2.pickle'
+melody_model_folder = '/homes/naudepin/Documents/ELU502 DeepLearning/JamBot/models/chords_mldy/Shifted_True_NextChord_True_ChordEmbed_embed_Counter_True_Highcrop_84_Lowcrop_24_Lr_1e-06_opt_Adam_bi_False_lstmsize_512_trainsize_4_testsize_1/'
+melody_model_name = 'modelEpoch50.pickle'
 
 midi_save_folder = 'predicted_midi/'
 
-seed_path = 'data/' + shift_folder + 'indroll/'
-seed_chord_path = 'data/' + shift_folder + 'chord_index/'
+seed_path = '/homes/naudepin/Documents/ELU502 DeepLearning/clean_midishifted/' + 'indroll/'
+seed_chord_path = '/homes/naudepin/Documents/ELU502 DeepLearning/clean_midishifted/' + 'chord_index/'
 
-seed_name = 'Piano Concerto n2 op19 1mov.mid.pickle'
+seed_name = "Hey Jude.mid.pickle"
 
 
 # Parameters for song generation:

@@ -30,7 +30,7 @@ from keras.backend.tensorflow_backend import set_session
 # set_session(tf.Session(config=config))
 
 #Path where the models are saved:
-model_path = 'models/chords/'
+model_path = 'models/chords/VachettePremierTest/'
 model_filetype = '.pickle'
 
 epochs = 20
