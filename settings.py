@@ -22,7 +22,7 @@ if (socket.gethostname()=="SurfaceNico" or socket.gethostname()=="Nicolas-HP" ):
 
 
     # If you only want to process a subfolder like '/A' or '/A/A' for tests
-    subfolder = '/The Beattles'
+    subfolder = '/The Beatles'
 
     tempo_folder1 = saving_folder  + 'tempo' + subfolder
     histo_folder1 = saving_folder  + 'histo' + subfolder
@@ -48,7 +48,7 @@ elif (socket.gethostname()=="DESKTOP-VFISH1P"):
 
 
     # If you only want to process a subfolder like '/A' or '/A/A' for tests
-    subfolder = '/Led Zeppelin'
+    subfolder = ''
 
     tempo_folder1 = saving_folder  + 'tempo' + subfolder
     histo_folder1 = saving_folder  + 'histo' + subfolder
