@@ -334,22 +334,22 @@ def do_all_steps():
     print(source_folder)
 
     print('1 changing Tempo')
-    #change_tempo_folder(source_folder,tempo_folder1) 
+    change_tempo_folder(source_folder,tempo_folder1) 
     
     print('2 histogramming')
-    #save_histo_oct_from_midi_folder(tempo_folder1,histo_folder1)
+    save_histo_oct_from_midi_folder(tempo_folder1,histo_folder1)
 
     print('3 make song histo')
-    #save_song_histo_from_histo(histo_folder1,song_histo_folder)
+    save_song_histo_from_histo(histo_folder1,song_histo_folder)
     
     print('4 shifting midi files')
-    #shift_midi_files(song_histo_folder,tempo_folder1,tempo_folder2)
+    shift_midi_files(song_histo_folder,tempo_folder1,tempo_folder2)
     
     print('5 making note indexes')
-    #note_ind_folder(tempo_folder2,roll_folder)
+    note_ind_folder(tempo_folder2,roll_folder)
 
     print('6 histogramming')
-    #save_histo_oct_from_midi_folder(tempo_folder2,histo_folder2)
+    save_histo_oct_from_midi_folder(tempo_folder2,histo_folder2)
 
     print('7 extracting chords')
     save_chords_from_histo(histo_folder2,chords_folder)

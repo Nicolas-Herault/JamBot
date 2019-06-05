@@ -1,6 +1,8 @@
 # Author: Jonas Wiesendanger, Andres Konrad, Gino Brunner (brunnegi@ethz.ch)
 from settings import *
+print("imports")
 from keras.models import Sequential
+print("5555555555")
 from keras.layers import LSTM
 from keras.layers import Dense, Activation
 from keras.layers import Embedding
